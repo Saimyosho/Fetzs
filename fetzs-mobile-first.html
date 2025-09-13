@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Fetz's Sports Pub - The Cheers of Johnstown. Your neighborhood sports bar with 20+ TVs, great food, cold beer, and the best atmosphere in town.">
+    <title>Fetz's Sports Pub | Johnstown's Premier Sports Bar</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-orange: #FF8C00;
+            --primary-black: #0A0A0A;
+            --text-light: #F3F4F6;
+            --text-dark: #1F2937;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-orange: linear-gradient(135deg, #FF8C00 0%, #FF6347 100%);
+            --gradient-dark: linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%);
+        }
+
+        /* Mobile-First Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-black);
+            color: var(--text-light);
+            overflow-x: hidden;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Typography - Mobile First */
+        h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            padding: 0 1rem;
+            margin: 0 auto;
+        }
+
+        /* Navigation - Mobile First */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-orange);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Navigation Links - Mobile */
+        .nav-links {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 60px);
+            background: rgba(10, 10, 10, 0.98);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            list-style: none;
+        }
+
+        .nav-links.active {
+            transform: translateX(0);
+        }
+
+        .nav-links li {
+            margin: 1rem 0;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 500;
+            display: block;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:active {
+            color: var(--primary-orange);
+        }
+
+        /* CTA Button */
+        .cta-button {
+            background: var(--gradient-orange);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-logo-img {
+            width: 200px;
+            max-width: 70%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Hero Section - Mobile First */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 4rem 1rem 2rem;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(26, 26, 26, 0.9)),
+                        url('https://i.ibb.co/HfHFSmYB/IMG-0551.jpg') center/cover;
+        }
+
+        .hero-content {
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-logo {
+            width: 200px;
+            max-width: 70%;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: var(--gradient-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Feature Cards - Mobile */
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-orange);
+            min-width: 30px;
+        }
+
+        .feature-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Hero Buttons - Mobile */
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Sections - Mobile First */
+        section {
+            padding: 3rem 1rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: var(--gradient-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* About Cards - Mobile */
+        .about-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .about-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .about-card-icon {
+            font-size: 2rem;
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+        }
+
+        .about-card h3 {
+            color: var(--primary-orange);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Gallery - Mobile */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 200px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Menu - Mobile */
+        .menu-categories {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-category-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .menu-category-btn.active {
+            background: var(--gradient-orange);
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item-info h4 {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-item-info p {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        .menu-item-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            white-space: nowrap;
+        }
+
+        /* Events - Mobile */
+        .events-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 1rem;
+        }
+
+        .event-date {
+            background: var(--gradient-orange);
+            color: var(--text-light);
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        /* Facebook Updates - Mobile */
+        .facebook-feed-container {
+            padding: 1rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow-x: auto;
+        }
+
+        .fb-page {
+            background: white;
+            border-radius: 10px;
+            min-width: 280px;
+        }
+
+        /* Contact - Mobile */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.25rem;
+            color: var(--primary-orange);
+            min-width: 25px;
+            margin-top: 0.25rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item p {
+            font-size: 0.875rem;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            border: 2px solid var(--glass-border);
+        }
+
+        /* Social Links - Mobile */
+        .social-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        /* Footer - Mobile */
+        footer {
+            background: var(--primary-black);
+            padding: 2rem 1rem 1rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary-orange);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* Tablet Styles (768px and up) */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 750px;
+                padding: 0 2rem;
+            }
+
+            .nav-container {
+                padding: 1rem 2rem;
+            }
+
+            .logo {
+                height: 45px;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .hero-features {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .feature-card {
+                flex: 0 1 calc(50% - 0.5rem);
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero-buttons .cta-button {
+                width: auto;
+                margin-top: 0;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
+
+            .menu-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .events-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .footer-content {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        /* Desktop Styles (1024px and up) */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+
+            /* Desktop Navigation */
+            .mobile-menu-toggle {
+                display: none;
+            }
+
+            .nav-links {
+                position: static;
+                transform: none;
+                height: auto;
+                width: auto;
+                background: none;
+                flex-direction: row;
+                padding: 0;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+                position: relative;
+            }
+
+            .nav-links a::before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                background: var(--primary-orange);
+                transform: translateX(-50%);
+                transition: width 0.3s ease;
+            }
+
+            .nav-links a:hover::before {
+                width: 100%;
+            }
+
+            .nav-links a:hover {
+                color: var(--primary-orange);
+                transform: translateY(-2px);
+            }
+
+            .nav-links .cta-button {
+                width: auto;
+                margin-top: 0;
+                margin-left: 1rem;
+            }
+
+            .logo {
+                height: 50px;
+            }
+
+            /* Hero adjustments for desktop */
+            .hero {
+                background-attachment: fixed;
+            }
+
+            .hero-logo {
+                width: 300px;
+            }
+
+            .hero-title {
+                font-size: 5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .feature-card {
+                flex: 0 1 auto;
+                max-width: 250px;
+            }
+
+            /* About grid - 3 columns */
+            .about-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            /* Gallery - 3 columns */
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .events-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Large Desktop (1440px and up) */
+        @media (min-width: 1440px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            .hero-title {
+                font-size: 6rem;
+            }
+
+            .section-title {
+                font-size: 3.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+
+            .gallery-item {
+                height: 300px;
+            }
+        }
+
+        /* Hover Effects - Desktop Only */
+        @media (hover: hover) and (pointer: fine) {
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+                border-color: var(--primary-orange);
+            }
+
+            .about-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(255, 140, 0, 0.2);
+                border-color: var(--primary-orange);
+            }
+
+            .gallery-item {
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            .gallery-item:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+            }
+
+            .menu-item:hover {
+                transform: translateX(10px);
+                border-color: var(--primary-orange);
+                box-shadow: 0 5px 20px rgba(255, 140, 0, 0.2);
+            }
+
+            .event-card {
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .event-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(255, 140, 0, 0.3);
+                border-color: var(--primary-orange);
+            }
+
+            .social-link:hover {
+                background: var(--gradient-orange);
+                color: var(--text-light);
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+            }
+
+            .cta-button {
+                transition: all 0.3s ease;
+            }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" 
+            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0">
+    </script>
+    
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <img src="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png" alt="Fetz's Sports Pub Logo" class="loader-logo-img">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png" alt="Fetz's Sports Pub">
+            </a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#updates">Updates</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="cta-button">Reserve Table</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content container">
+            <img src="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png" alt="Fetz's Sports Pub" class="hero-logo">
+            <h1 class="hero-title">Sports Pub</h1>
+            <p class="hero-subtitle">The Cheers of Johnstown</p>
+            
+            <div class="hero-features">
+                <div class="feature-card">
+                    <i class="fas fa-tv feature-icon"></i>
+                    <div>
+                        <h3>20+ HD TVs</h3>
+                        <p>Never miss a game</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-beer feature-icon"></i>
+                    <div>
+                        <h3>Ice Cold Beer</h3>
+                        <p>Local & craft selection</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-utensils feature-icon"></i>
+                    <div>
+                        <h3>Great Food</h3>
+                        <p>Wings, burgers & more</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users feature-icon"></i>
+                    <div>
+                        <h3>Community Hub</h3>
+                        <p>Since 2019</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <button class="cta-button" onclick="window.location.href='tel:8145394805'">
+                    <i class="fas fa-phone"></i> Call Now
+                </button>
+                <button class="cta-button" onclick="window.open('https://maps.google.com/?q=151+Johns+Street+Johnstown+PA', '_blank')">
+                    <i class="fas fa-map-marker-alt"></i> Get Directions
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Your Neighborhood Sports Bar</h2>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-trophy about-card-icon"></i>
+                    <h3>Game Day Central</h3>
+                    <p>With over 20 HD TVs, we're your ultimate destination for watching every game. NFL, NHL, NBA, MLB - we've got you covered.</p>
+                </div>
+                
+                <div class="about-card">
+                    <i class="fas fa-users about-card-icon"></i>
+                    <h3>Community Hub</h3>
+                    <p>Since 2019, we've been the place where Johnstown comes together. Whether you're a regular or first-timer, you're family here.</p>
+                </div>
+                
+                <div class="about-card">
+                    <i class="fas fa-calendar-alt about-card-icon"></i>
+                    <h3>Daily Specials</h3>
+                    <p>From wing nights to happy hour deals, we've got something special every day of the week.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">The Fetz's Experience</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/SbQxmdJ/485355928-1164925575420669-3376181480674751299-n.jpg" alt="Fetz's Sports Bar" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/jvTJrmfX/485038981-1164931415420085-8458761466488689483-n.jpg" alt="Bar Atmosphere" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/ZzNs1tvT/485408784-1164931395420087-231121042415238511-n.jpg" alt="Sports Viewing" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/3ymb8G33/485738912-1166578971921996-1999459124400130055-n.jpg" alt="Game Night" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/QFWcsMqB/486066628-1166630111916882-3277113231409134326-n.jpg" alt="Bar Area" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/ycwxHxRz/491932374-1186147779965115-9102390308129766258-n.jpg" alt="Fetz's Interior" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/zpPNXNP/unnamed-5.webp" alt="Dining Area" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/0VtRHD4S/unnamed-4.webp" alt="Sports Bar" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/Zz7yJY3d/unnamed-3.webp" alt="Bar Seating" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/8D0JZcLs/unnamed-2.webp" alt="Fetz's Pub" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/KpS0mH3C/Fetz.webp" alt="Fetz's Logo Display" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/Nns9mfRy/s.webp" alt="Bar Experience" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Menu Highlights</h2>
+            
+            <div class="menu-categories">
+                <button class="menu-category-btn active" data-category="appetizers">Appetizers</button>
+                <button class="menu-category-btn" data-category="mains">Main Dishes</button>
+                <button class="menu-category-btn" data-category="drinks">Drinks</button>
+            </div>
+            
+            <div class="menu-grid" id="menuGrid">
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-item-info">
+                        <h4>Award-Winning Wings</h4>
+                        <p>Choice of 8 signature sauces</p>
+                    </div>
+                    <span class="menu-item-price">$12.99</span>
+                </div>
+                
+                <div class="menu-item" data-category="appetizers">
+                    <div class="menu-item-info">
+                        <h4>Loaded Nachos</h4>
+                        <p>Cheese, jalapeños, sour cream</p>
+                    </div>
+                    <span class="menu-item-price">$10.99</span>
+                </div>
+                
+                <div class="menu-item" data-category="mains" style="display: none;">
+                    <div class="menu-item-info">
+                        <h4>Fetz's Burger</h4>
+                        <p>Half-pound Angus beef, bacon</p>
+                    </div>
+                    <span class="menu-item-price">$14.99</span>
+                </div>
+                
+                <div class="menu-item" data-category="mains" style="display: none;">
+                    <div class="menu-item-info">
+                        <h4>BBQ Ribs</h4>
+                        <p>Full rack with fries</p>
+                    </div>
+                    <span class="menu-item-price">$22.99</span>
+                </div>
+                
+                <div class="menu-item" data-category="drinks" style="display: none;">
+                    <div class="menu-item-info">
+                        <h4>Draft Beer</h4>
+                        <p>Local and domestic</p>
+                    </div>
+                    <span class="menu-item-price">$4-8</span>
+                </div>
+                
+                <div class="menu-item" data-category="drinks" style="display: none;">
+                    <div class="menu-item-info">
+                        <h4>Cocktails</h4>
+                        <p>House specials</p>
+                    </div>
+                    <span class="menu-item-price">$7-10</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="container">
+            <h2 class="section-title">Weekly Events</h2>
+            
+            <div class="events-container">
+                <div class="event-card">
+                    <img src="https://i.ibb.co/yn6PgZ30/IMG-0534.jpg" class="event-image" alt="Monday Night Football" loading="lazy">
+                    <div class="event-info">
+                        <span class="event-date">Every Monday</span>
+                        <h3>Monday Night Football</h3>
+                        <p>$2 off all draft beers</p>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <img src="https://i.ibb.co/2X3CH1R/IMG-0535.jpg" class="event-image" alt="Wing Wednesday" loading="lazy">
+                    <div class="event-info">
+                        <span class="event-date">Every Wednesday</span>
+                        <h3>Wing Wednesday</h3>
+                        <p>50¢ wings all day</p>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <img src="https://i.ibb.co/TMwWFHwY/IMG-0536.jpg" class="event-image" alt="Live Music" loading="lazy">
+                    <div class="event-info">
+                        <span class="event-date">Friday Nights</span>
+                        <h3>Live Music</h3>
+                        <p>Local bands at 9 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facebook Updates Section -->
+    <section class="facebook-section" id="updates">
+        <div class="container">
+            <h2 class="section-title">Latest Updates</h2>
+            <p style="text-align: center; opacity: 0.8; margin-bottom: 2rem;">Follow us for daily specials</p>
+            
+            <div class="facebook-feed-container">
+                <div class="fb-page" 
+                     data-href="https://www.facebook.com/profile.php?id=100057097134177" 
+                     data-tabs="timeline" 
+                     data-width="500" 
+                     data-height="500" 
+                     data-small-header="true" 
+                     data-adapt-container-width="true" 
+                     data-hide-cover="false" 
+                     data-show-facepile="false">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Visit Us Today</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>151 Johns Street<br>Johnstown, PA 15901</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Mon-Thu: 11 AM - 12 AM<br>
+                            Fri-Sat: 11 AM - 2 AM<br>
+                            Sunday: 12 PM - 11 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>(814) 539-4805</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100057097134177" target="_blank" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-yelp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.8657!2d-78.9237!3d40.3167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDE5JzAwLjEiTiA3OMKwNTUnMjUuMyJX!5e0!3m2!1sen!2sus!4v1635959701234!5m2!1sen!2sus"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content container">
+            <div class="footer-section">
+                <h3>FETZ'S SPORTS PUB</h3>
+                <p>Your neighborhood sports bar since 2019.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Mon-Thu: 11 AM - 12 AM<br>
+                Fri-Sat: 11 AM - 2 AM<br>
+                Sun: 12 PM - 11 PM</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100057097134177" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Fetz's Sports Pub. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 60;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Menu Category Filter
+        const categoryBtns = document.querySelectorAll('.menu-category-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const category = btn.getAttribute('data-category');
+                menuItems.forEach(item => {
+                    if (item.getAttribute('data-category') === category) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Reserve Table Button
+        document.querySelector('.nav-links .cta-button').addEventListener('click', () => {
+            alert('Call us at (814) 539-4805 to reserve your table!');
+        });
+    </script>
+</body>
+</html>
