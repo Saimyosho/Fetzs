@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fetz's Sports Pub - The Cheers of Johnstown. Your neighborhood sports bar with 20+ TVs, great food, cold beer, and the best atmosphere in town.">
+    <meta property="og:title" content="Fetz's Sports Pub | Johnstown's Premier Sports Bar">
+    <meta property="og:description" content="Your neighborhood sports bar since 2019. 20+ HD TVs, award-winning wings, ice cold beer.">
+    <meta property="og:image" content="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png">
+    <title>Fetz's Sports Pub | Johnstown's Premier Sports Bar</title>
+    
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- AOS - Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper for carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/iconfont/tabler-icons.min.css">
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            --primary-orange: #FF8C00;
+            --primary-gold: #FFD700;
+            --primary-black: #0A0A0A;
+            --accent-red: #DC2626;
+            --text-light: #F3F4F6;
+            --text-dark: #1F2937;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient-orange: linear-gradient(135deg, #FF8C00 0%, #FF6347 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gradient-dark: linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 100%);
+            --gradient-mesh: radial-gradient(at 40% 20%, hsla(28,100%,74%,1) 0px, transparent 50%),
+                            radial-gradient(at 80% 0%, hsla(189,100%,56%,1) 0px, transparent 50%),
+                            radial-gradient(at 0% 50%, hsla(355,100%,93%,1) 0px, transparent 50%),
+                            radial-gradient(at 80% 50%, hsla(340,100%,76%,1) 0px, transparent 50%),
+                            radial-gradient(at 0% 100%, hsla(22,100%,77%,1) 0px, transparent 50%),
+                            radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
+                            radial-gradient(at 0% 0%, hsla(343,100%,76%,1) 0px, transparent 50%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-black);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-orange);
+            border-radius: 5px;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animated Gradient Background */
+        .animated-gradient {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Neumorphism Style */
+        .neumorphic {
+            background: linear-gradient(145deg, #0f0f0f, #0c0c0c);
+            box-shadow: 20px 20px 60px #080808,
+                        -20px -20px 60px #121212;
+        }
+
+        /* Blob Animation */
+        .blob {
+            position: absolute;
+            opacity: 0.3;
+            filter: blur(100px);
+            animation: blob 7s infinite;
+        }
+
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                        0.025em 0.04em 0 #fffc00;
+            animation: glitch 725ms infinite;
+        }
+
+        @keyframes glitch {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                            0.025em 0.04em 0 #fffc00;
+            }
+            15%, 49% {
+                text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                            0.025em 0.04em 0 #fffc00;
+            }
+        }
+
+        /* Parallax Layers */
+        .parallax-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            will-change: transform;
+        }
+
+        /* Liquid Button */
+        .liquid-button {
+            position: relative;
+            padding: 20px 50px;
+            display: inline-block;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: fit-content;
+            min-width: 200px;
+            overflow: hidden;
+            border-radius: 40px;
+            background: var(--gradient-orange);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .liquid-button {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+
+        .liquid-button span {
+            position: relative;
+            z-index: 1;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .liquid-button .liquid {
+            position: absolute;
+            top: -80px;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-gold);
+            box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+            transition: .5s;
+        }
+
+        .liquid-button .liquid::after,
+        .liquid-button .liquid::before {
+            content: '';
+            width: 200%;
+            height: 200%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -75%);
+            background: #000;
+        }
+
+        .liquid-button .liquid::before {
+            border-radius: 45%;
+            background: rgba(255, 140, 0, 1);
+            animation: animate 5s linear infinite;
+        }
+
+        .liquid-button .liquid::after {
+            border-radius: 40%;
+            background: rgba(255, 140, 0, .5);
+            animation: animate 10s linear infinite;
+        }
+
+        .liquid-button:hover .liquid {
+            top: -120px;
+        }
+
+        @keyframes animate {
+            0% { transform: translate(-50%, -75%) rotate(0deg); }
+            100% { transform: translate(-50%, -75%) rotate(360deg); }
+        }
+
+        /* Morphing Shape */
+        .morph {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(255, 140, 0, 0.3);
+        }
+
+        /* Text Reveal Animation */
+        .text-reveal {
+            overflow: hidden;
+        }
+
+        .text-reveal span {
+            display: inline-block;
+            animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+        }
+
+        @keyframes reveal {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Loading Animation */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-black);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-wrapper.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-logo {
+            width: 200px;
+            max-width: 60%;
+            animation: logoLoader 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.5));
+        }
+
+        @keyframes logoLoader {
+            0% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.5;
+            }
+            25% {
+                transform: scale(1.1) rotate(5deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.8;
+                filter: drop-shadow(0 0 40px rgba(255, 140, 0, 0.8));
+            }
+            75% {
+                transform: scale(1.1) rotate(-5deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.5;
+            }
+        }
+
+        /* Magnetic Button Effect */
+        .magnetic-button {
+            position: relative;
+            display: inline-block;
+            padding: 1rem 2rem;
+            cursor: pointer;
+        }
+
+        /* Responsive utilities */
+        @media (max-width: 768px) {
+            .hide-mobile { display: none !important; }
+        }
+
+        @media (min-width: 769px) {
+            .hide-desktop { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader-wrapper" id="loader">
+        <img src="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png" alt="Fetz's" class="loader-logo">
+    </div>
+
+    <!-- Animated Background -->
+    <div class="fixed inset-0 -z-10">
+        <div class="blob w-96 h-96 bg-orange-600 top-0 left-0"></div>
+        <div class="blob w-96 h-96 bg-yellow-500 bottom-0 right-0" style="animation-delay: 2s;"></div>
+        <div class="blob w-96 h-96 bg-red-600 top-1/2 left-1/2" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#home" class="flex items-center">
+                    <img src="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png" alt="Fetz's" class="h-12 transform hover:scale-110 transition-transform">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li><a href="#home" class="hover:text-orange-500 transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-orange-500 transition-colors">About</a></li>
+                    <li><a href="#gallery" class="hover:text-orange-500 transition-colors">Gallery</a></li>
+                    <li><a href="#menu" class="hover:text-orange-500 transition-colors">Menu</a></li>
+                    <li><a href="#events" class="hover:text-orange-500 transition-colors">Events</a></li>
+                    <li><a href="#contact" class="hover:text-orange-500 transition-colors">Contact</a></li>
+                    <li>
+                        <a href="#" class="liquid-button">
+                            <span>Reserve Table</span>
+                            <div class="liquid"></div>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="mobileMenuBtn">
+                    <i class="ti ti-menu-2 text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden glass" id="mobileMenu">
+            <ul class="flex flex-col items-center space-y-4 py-8">
+                <li><a href="#home" class="text-lg">Home</a></li>
+                <li><a href="#about" class="text-lg">About</a></li>
+                <li><a href="#gallery" class="text-lg">Gallery</a></li>
+                <li><a href="#menu" class="text-lg">Menu</a></li>
+                <li><a href="#events" class="text-lg">Events</a></li>
+                <li><a href="#contact" class="text-lg">Contact</a></li>
+                <li><button class="bg-orange-500 px-6 py-2 rounded-full">Reserve Table</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Parallax -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Video/Image Background with Overlay -->
+        <div class="absolute inset-0">
+            <img src="https://i.ibb.co/HfHFSmYB/IMG-0551.jpg" alt="Fetz's Interior" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        </div>
+
+        <!-- Particles overlay -->
+        <div id="particles-js" class="absolute inset-0"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
+            <div class="animate__animated animate__fadeInDown flex justify-center">
+                <img src="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png" alt="Fetz's" class="w-48 md:w-64 mx-auto mb-8 morph">
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-bebas animate__animated animate__fadeInUp">
+                <span class="gradient-text glitch">SPORTS PUB</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-8 animate__animated animate__fadeInUp animate__delay-1s text-gray-300">
+                The Cheers of Johnstown Since 2019
+            </p>
+
+            <!-- Feature Cards with Icons -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="glass rounded-2xl p-4 card-hover">
+                    <i class="ph-television text-4xl text-orange-500 mb-2"></i>
+                    <h3 class="text-lg font-bold">20+ TVs</h3>
+                    <p class="text-sm text-gray-400">HD Sports</p>
+                </div>
+                <div class="glass rounded-2xl p-4 card-hover">
+                    <i class="ph-beer-bottle text-4xl text-orange-500 mb-2"></i>
+                    <h3 class="text-lg font-bold">Cold Beer</h3>
+                    <p class="text-sm text-gray-400">On Tap</p>
+                </div>
+                <div class="glass rounded-2xl p-4 card-hover">
+                    <i class="ph-hamburger text-4xl text-orange-500 mb-2"></i>
+                    <h3 class="text-lg font-bold">Great Food</h3>
+                    <p class="text-sm text-gray-400">Fresh Daily</p>
+                </div>
+                <div class="glass rounded-2xl p-4 card-hover">
+                    <i class="ph-users text-4xl text-orange-500 mb-2"></i>
+                    <h3 class="text-lg font-bold">Community</h3>
+                    <p class="text-sm text-gray-400">Your Place</p>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center animate__animated animate__fadeInUp animate__delay-3s w-full px-4">
+                <a href="tel:8145394805" class="w-full md:w-auto flex justify-center">
+                    <div class="liquid-button">
+                        <span><i class="ph-phone"></i> Call Now</span>
+                        <div class="liquid"></div>
+                    </div>
+                </a>
+                <a href="https://maps.google.com/?q=151+Johns+Street+Johnstown+PA" target="_blank" class="w-full md:w-auto flex justify-center">
+                    <div class="liquid-button">
+                        <span><i class="ph-map-pin"></i> Directions</span>
+                        <div class="liquid"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="ph-caret-down text-3xl text-orange-500"></i>
+        </div>
+    </section>
+
+    <!-- About Section with Gradient Mesh -->
+    <section id="about" class="py-20 relative">
+        <div class="absolute inset-0 opacity-5" style="background: var(--gradient-mesh);"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-bebas text-center mb-4 gradient-text" data-aos="fade-up">
+                Welcome to Your Home Away From Home
+            </h2>
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Where every game is the big game and every seat is the best in the house
+            </p>
+
+            <!-- Bento Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Large Card -->
+                <div class="md:col-span-2 lg:col-span-2 row-span-2 glass rounded-3xl p-8 card-hover" data-aos="fade-up">
+                    <div class="flex items-start space-x-4">
+                        <div class="p-4 bg-orange-500/20 rounded-2xl">
+                            <i class="ph-trophy text-4xl text-orange-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Ultimate Game Day Experience</h3>
+                            <p class="text-gray-400 mb-4">
+                                With over 20 HD TVs strategically placed throughout our venue, you'll never miss a moment of the action. 
+                                From NFL RedZone to NHL Center Ice, we've got every package to ensure you catch every game.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 mt-6">
+                                <div class="glass rounded-xl p-4">
+                                    <h4 class="font-bold text-orange-500">NFL Sunday Ticket</h4>
+                                    <p class="text-sm text-gray-400">Every game, every Sunday</p>
+                                </div>
+                                <div class="glass rounded-xl p-4">
+                                    <h4 class="font-bold text-orange-500">NHL Center Ice</h4>
+                                    <p class="text-sm text-gray-400">All the hockey action</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Cards -->
+                <div class="glass rounded-3xl p-6 card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <i class="ph-users-three text-4xl text-orange-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Community First</h3>
+                    <p class="text-gray-400">Building friendships one game at a time</p>
+                </div>
+
+                <div class="glass rounded-3xl p-6 card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <i class="ph-clock-afternoon text-4xl text-orange-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Daily Specials</h3>
+                    <p class="text-gray-400">Something special every day of the week</p>
+                </div>
+
+                <div class="glass rounded-3xl p-6 card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <i class="ph-star text-4xl text-orange-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">5 Years Strong</h3>
+                    <p class="text-gray-400">Proudly serving Johnstown since 2019</p>
+                </div>
+
+                <div class="glass rounded-3xl p-6 card-hover" data-aos="fade-up" data-aos-delay="500">
+                    <i class="ph-beer-stein text-4xl text-orange-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Craft Selection</h3>
+                    <p class="text-gray-400">Local and imported beers on tap</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section with Swiper -->
+    <section id="gallery" class="py-20 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl md:text-7xl font-bebas text-center mb-12 gradient-text" data-aos="fade-up">
+                The Fetz's Experience
+            </h2>
+
+            <!-- Swiper Gallery -->
+            <div class="swiper gallerySwiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/SbQxmdJ/485355928-1164925575420669-3376181480674751299-n.jpg" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/jvTJrmfX/485038981-1164931415420085-8458761466488689483-n.jpg" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/ZzNs1tvT/485408784-1164931395420087-231121042415238511-n.jpg" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/3ymb8G33/485738912-1166578971921996-1999459124400130055-n.jpg" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/QFWcsMqB/486066628-1166630111916882-3277113231409134326-n.jpg" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/ycwxHxRz/491932374-1186147779965115-9102390308129766258-n.jpg" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/zpPNXNP/unnamed-5.webp" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://i.ibb.co/KpS0mH3C/Fetz.webp" class="rounded-2xl w-full h-96 object-cover">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+            <!-- Masonry Grid for Desktop -->
+            <div class="hidden lg:grid grid-cols-4 gap-4 mt-12" data-aos="fade-up">
+                <div class="col-span-2 row-span-2">
+                    <img src="https://i.ibb.co/SbQxmdJ/485355928-1164925575420669-3376181480674751299-n.jpg" class="rounded-2xl w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/jvTJrmfX/485038981-1164931415420085-8458761466488689483-n.jpg" class="rounded-2xl w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/ZzNs1tvT/485408784-1164931395420087-231121042415238511-n.jpg" class="rounded-2xl w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/3ymb8G33/485738912-1166578971921996-1999459124400130055-n.jpg" class="rounded-2xl w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+                <div>
+                    <img src="https://i.ibb.co/QFWcsMqB/486066628-1166630111916882-3277113231409134326-n.jpg" class="rounded-2xl w-full h-48 object-cover hover:scale-105 transition-transform duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section with Tabs -->
+    <section id="menu" class="py-20 relative">
+        <div class="absolute inset-0 opacity-5" style="background: var(--gradient-mesh);"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-bebas text-center mb-12 gradient-text" data-aos="fade-up">
+                Menu Favorites
+            </h2>
+
+            <!-- Tab Navigation -->
+            <div class="flex justify-center space-x-4 mb-8 overflow-x-auto" data-aos="fade-up">
+                <button class="tab-btn active px-6 py-3 glass rounded-full font-bold transition-all" data-tab="appetizers">
+                    <i class="ph-pizza-slice mr-2"></i>Appetizers
+                </button>
+                <button class="tab-btn px-6 py-3 glass rounded-full font-bold transition-all" data-tab="mains">
+                    <i class="ph-hamburger mr-2"></i>Mains
+                </button>
+                <button class="tab-btn px-6 py-3 glass rounded-full font-bold transition-all" data-tab="drinks">
+                    <i class="ph-beer-bottle mr-2"></i>Drinks
+                </button>
+            </div>
+
+            <!-- Menu Content -->
+            <div class="tab-content" id="appetizers">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover" data-aos="fade-right">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">Award-Winning Wings</h3>
+                            <p class="text-gray-400">Choice of 8 signature sauces, celery & ranch</p>
+                            <div class="flex space-x-2 mt-2">
+                                <span class="px-2 py-1 bg-orange-500/20 rounded text-xs">🔥 Spicy</span>
+                                <span class="px-2 py-1 bg-green-500/20 rounded text-xs">⭐ Popular</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$12.99</span>
+                    </div>
+                    
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover" data-aos="fade-left">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">Loaded Nachos Supreme</h3>
+                            <p class="text-gray-400">Cheese, jalapeños, salsa, sour cream, guac</p>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$10.99</span>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover" data-aos="fade-right">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">Mozzarella Sticks</h3>
+                            <p class="text-gray-400">Golden fried with marinara sauce</p>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$8.99</span>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover" data-aos="fade-left">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">Loaded Potato Skins</h3>
+                            <p class="text-gray-400">Bacon, cheese, scallions, sour cream</p>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$9.99</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="mains">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">Fetz's Signature Burger</h3>
+                            <p class="text-gray-400">Half-pound Angus, bacon, cheese, special sauce</p>
+                            <div class="flex space-x-2 mt-2">
+                                <span class="px-2 py-1 bg-green-500/20 rounded text-xs">⭐ House Special</span>
+                            </div>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$14.99</span>
+                    </div>
+                    
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">BBQ Ribs Full Rack</h3>
+                            <p class="text-gray-400">Fall-off-the-bone tender with coleslaw & fries</p>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$22.99</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="drinks">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">Draft Beer Selection</h3>
+                            <p class="text-gray-400">16oz pours - Local & domestic favorites</p>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$4-8</span>
+                    </div>
+                    
+                    <div class="glass rounded-2xl p-6 flex justify-between items-center card-hover">
+                        <div>
+                            <h3 class="text-xl font-bold text-orange-500">Signature Cocktails</h3>
+                            <p class="text-gray-400">House specials & classic mixed drinks</p>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">$7-10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section with Timeline -->
+    <section id="events" class="py-20 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl md:text-7xl font-bebas text-center mb-12 gradient-text" data-aos="fade-up">
+                Weekly Events & Specials
+            </h2>
+
+            <!-- Event Timeline -->
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-orange-500 to-red-500 hidden md:block"></div>
+                
+                <div class="space-y-12">
+                    <!-- Monday -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-right">
+                        <div class="md:w-1/2 md:text-right md:pr-8">
+                            <div class="glass rounded-2xl p-6 card-hover">
+                                <h3 class="text-2xl font-bold text-orange-500">Monday Night Football</h3>
+                                <p class="text-gray-400">$2 off all draft beers during the game</p>
+                                <p class="text-sm text-gray-500 mt-2">All Season Long</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 bg-orange-500 rounded-full border-4 border-black"></div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <img src="https://i.ibb.co/yn6PgZ30/IMG-0534.jpg" class="rounded-2xl h-48 w-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- Wednesday -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-left">
+                        <div class="md:w-1/2 md:text-right md:pr-8 order-2 md:order-1">
+                            <img src="https://i.ibb.co/2X3CH1R/IMG-0535.jpg" class="rounded-2xl h-48 w-full object-cover">
+                        </div>
+                        <div class="hidden md:block w-8 h-8 bg-orange-500 rounded-full border-4 border-black"></div>
+                        <div class="md:w-1/2 md:pl-8 order-1 md:order-2">
+                            <div class="glass rounded-2xl p-6 card-hover">
+                                <h3 class="text-2xl font-bold text-orange-500">Wing Wednesday</h3>
+                                <p class="text-gray-400">50¢ wings all day - 20+ flavors</p>
+                                <p class="text-sm text-gray-500 mt-2">Every Wednesday</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Friday -->
+                    <div class="flex flex-col md:flex-row items-center" data-aos="fade-right">
+                        <div class="md:w-1/2 md:text-right md:pr-8">
+                            <div class="glass rounded-2xl p-6 card-hover">
+                                <h3 class="text-2xl font-bold text-orange-500">Live Music Fridays</h3>
+                                <p class="text-gray-400">Local bands starting at 9 PM</p>
+                                <p class="text-sm text-gray-500 mt-2">No Cover Charge</p>
+                            </div>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 bg-orange-500 rounded-full border-4 border-black"></div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <img src="https://i.ibb.co/TMwWFHwY/IMG-0536.jpg" class="rounded-2xl h-48 w-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Map -->
+    <section id="contact" class="py-20 relative">
+        <div class="absolute inset-0 opacity-5" style="background: var(--gradient-mesh);"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-bebas text-center mb-12 gradient-text" data-aos="fade-up">
+                Find Us
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="space-y-6" data-aos="fade-right">
+                    <div class="glass rounded-2xl p-6 card-hover">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-orange-500/20 rounded-xl">
+                                <i class="ph-map-pin text-2xl text-orange-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Location</h3>
+                                <p class="text-gray-400">151 Johns Street<br>Johnstown, PA 15901</p>
+                                <a href="https://maps.google.com/?q=151+Johns+Street+Johnstown+PA" target="_blank" class="text-orange-500 hover:underline mt-2 inline-block">
+                                    Get Directions →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 card-hover">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-orange-500/20 rounded-xl">
+                                <i class="ph-clock text-2xl text-orange-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Hours</h3>
+                                <div class="text-gray-400 space-y-1">
+                                    <p><span class="font-semibold">Mon-Thu:</span> 11 AM - 12 AM</p>
+                                    <p><span class="font-semibold">Fri-Sat:</span> 11 AM - 2 AM</p>
+                                    <p><span class="font-semibold">Sunday:</span> 12 PM - 11 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-2xl p-6 card-hover">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-orange-500/20 rounded-xl">
+                                <i class="ph-phone text-2xl text-orange-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Call Us</h3>
+                                <a href="tel:8145394805" class="text-2xl text-orange-500 hover:underline">
+                                    (814) 539-4805
+                                </a>
+                                <p class="text-gray-400 mt-2">Call for reservations or takeout</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=100057097134177" target="_blank" 
+                           class="p-4 glass rounded-xl hover:bg-orange-500/20 transition-colors">
+                            <i class="ph-facebook-logo text-2xl"></i>
+                        </a>
+                        <a href="#" class="p-4 glass rounded-xl hover:bg-orange-500/20 transition-colors">
+                            <i class="ph-instagram-logo text-2xl"></i>
+                        </a>
+                        <a href="#" class="p-4 glass rounded-xl hover:bg-orange-500/20 transition-colors">
+                            <i class="ph-google-logo text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="glass rounded-2xl overflow-hidden h-96 lg:h-auto" data-aos="fade-left">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.8657!2d-78.9237!3d40.3167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDE5JzAwLjEiTiA3OMKwNTUnMjUuMyJX!5e0!3m2!1sen!2sus!4v1635959701234!5m2!1sen!2sus"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 glass">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://i.ibb.co/27PbHnr0/Fetzs-Logo-Transparent.png" alt="Fetz's" class="h-16 mb-4">
+                    <p class="text-gray-400">Your neighborhood sports bar since 2019</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange-500">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#menu" class="hover:text-orange-500 transition-colors">Menu</a></li>
+                        <li><a href="#events" class="hover:text-orange-500 transition-colors">Events</a></li>
+                        <li><a href="#gallery" class="hover:text-orange-500 transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-orange-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange-500">Hours</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Monday - Thursday: 11 AM - 12 AM</li>
+                        <li>Friday - Saturday: 11 AM - 2 AM</li>
+                        <li>Sunday: 12 PM - 11 PM</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-orange-500">Connect</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=100057097134177" target="_blank" 
+                           class="p-3 glass rounded-lg hover:bg-orange-500/20 transition-colors">
+                            <i class="ph-facebook-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="p-3 glass rounded-lg hover:bg-orange-500/20 transition-colors">
+                            <i class="ph-instagram-logo text-xl"></i>
+                        </a>
+                        <a href="#" class="p-3 glass rounded-lg hover:bg-orange-500/20 transition-colors">
+                            <i class="ph-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2024 Fetz's Sports Pub. All Rights Reserved. | Crafted with ❤️ in Johnstown</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 p-4 glass rounded-full opacity-0 pointer-events-none transition-all">
+        <i class="ph-arrow-up text-xl text-orange-500"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize Swiper
+        const swiper = new Swiper('.gallerySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 4,
+                },
+            },
+        });
+
+        // Initialize Particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 50, density: { enable: true, value_area: 800 } },
+                color: { value: '#FF8C00' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.3, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#FF8C00',
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'grab' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+            },
+            retina_detect: true
+        });
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 2000);
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.dataset.tab;
+                
+                tabBtns.forEach(b => b.classList.remove('active', 'bg-orange-500'));
+                tabContents.forEach(c => c.classList.add('hidden'));
+                
+                btn.classList.add('active', 'bg-orange-500');
+                document.getElementById(tabName).classList.remove('hidden');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100');
+            } else {
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+                backToTop.classList.remove('opacity-100');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-black/90');
+            } else {
+                navbar.classList.remove('bg-black/90');
+            }
+        });
+    </script>
+</body>
+</html>
